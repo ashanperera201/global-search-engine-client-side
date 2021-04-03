@@ -1,0 +1,6 @@
+<div class="search-bar">
+    <input type="seach" id="searchBar" name='searchBar' placeholder=" " (keyup.enter)='onSearch($event)'
+        [(ngModel)]='searchKey' />
+    <label for="searchBar">What are you looking for?</label>
+    <button (click)="onSearchClickHander()"><span class="material-icons">search</span></button>
+</div>

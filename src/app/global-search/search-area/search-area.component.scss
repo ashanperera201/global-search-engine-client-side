@@ -1,0 +1,88 @@
+.search-bar {
+    position: relative;
+    width: 80rem;
+
+    @media screen and (max-width: 767px) {
+        width: fit-content;
+    }
+
+    input,
+    label {
+        display: block;
+        font-size: 2rem;
+        width: 100%;
+        padding: 5px 0;
+        color: #9c9c9c;
+        block-size: 4rem;
+    }
+    input {
+        border: unset;
+        outline: unset;
+        border-bottom: 1px solid #cccccc;
+        padding-inline-end: 40px;
+
+        &:not(:placeholder-shown) {
+            border-bottom: 2px solid #0a0a0c;
+        }
+    }
+
+    input:not(:placeholder-shown) ~ label {
+        display: none;
+    }
+
+    input:focus ~ label,
+    input:active,
+    input:not(:placeholder-shown) ~ label {
+        &:after {
+            transform: scaleX(1);
+        }
+    }
+
+    label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-block-end: 0;
+        display: flex;
+        align-items: center;
+        padding-inline-end: 4rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        inline-size: 100%;
+
+        @media screen and (max-width: 767px) {
+            inline-size: calc(100% - 4rem);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            inline-size: 100%;
+            transform-origin: center;
+            block-size: 2px;
+            background-color: #0a0a0c;
+            transition: all 0.3s;
+        }
+    }
+
+    button {
+        border: unset;
+        outline: unset;
+        font-size: 1.6rem;
+        background-color: unset;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        min-inline-size: 4rem;
+        min-block-size: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #9c9c9c;
+        cursor: pointer;
+    }
+}

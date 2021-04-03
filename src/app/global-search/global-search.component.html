@@ -1,0 +1,74 @@
+<div class="search-engine">
+    <div class="search-engine__container">
+        <div class="search-engine__header-section">
+            <header>
+                <div class="search-engine__header-section--logo">
+                    <img src="../assets/img/g.png" alt="" />
+                </div>
+                <h1 class="search-engine__header-section--title">How can we help?</h1>
+                <div class="search-engine__header-section--search">
+                    <search-area (searchedTerm)="searchedTerm($event)"></search-area>
+                </div>
+            </header>
+        </div>
+        <main class="search-engine__body-section">
+            <div class="search-engine__body-section--left">
+                <h4 class="search-engine__body-section--title">Recommended for you...</h4>
+                <div class="search-engine__body-section--chip-wrapper">
+                    <span class="chip">Popular</span>
+                    <span class="chip chip--active">News</span>
+                    <span class="chip">Science</span>
+                    <span class="chip">Music</span>
+                    <span class="chip chip--active">Tech</span>
+                    <span class="chip">Health</span>
+                    <span class="chip chip--active">Economy</span>
+                    <span class="chip">Movies</span>
+                </div>
+                <div class="search-engine__body-section--content-list">
+                    <ul class="content-list">
+                        <li class="content-list__item" *ngFor="let clinic of ' '.repeat(15).split('')">
+                            <div class="content-list__img">
+                                <img src="https://cdn.carbuzz.com/gallery-images/840x560/406000/400/406401.jpg"
+                                    alt="img">
+                            </div>
+                            <p class="content-list__description">Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Omnis
+                                non porro tempora laboriosam rem eligendi!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-engine__body-section--right">
+                <div class="search-engine__body-section--tabs">
+                    <tabset class="tab">
+                        <tab heading="Most visited" id="tab1">
+                            <ul class="tab-list">
+                                <li class="tab-list__item" *ngFor="let clinic of ' '.repeat(1).split('')">
+                                    <div class="tab-list__item-icon">
+                                        <img src="../assets/img/Bitcoin-BTC-icon.png" alt="">
+                                    </div>
+                                    <div class="tab-list__item-column tab-list__item-column--btc">
+                                        <label>Visited Count</label>
+                                        <p>100</p>
+                                    </div>
+                                    <div class="tab-list__item-column tab-list__item-column--price">
+                                        <label>Visited Site</label>
+                                        <p>www.nibm.lk</p>
+                                    </div>
+                                    <div class="tab-list__item-column tab-list__item-column--change">
+                                        <label>View ratings</label>
+                                        <p class="positive">....</p>
+                                    </div>
+                                    <div class="tab-list__item-chart">
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </tab>
+                        <tab heading="Top searches">Basic content 1</tab>
+                    </tabset>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
