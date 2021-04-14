@@ -17,6 +17,9 @@
         &--logo {
             img {
                 max-block-size: 7rem;
+                @media screen and (max-width: 767px) {
+                    max-block-size: 3rem;
+                }
             }
         }
 
@@ -165,12 +168,16 @@
         padding: 0.5rem 0;
 
         &-icon {
-            min-block-size: 3rem;
-            max-block-size: 3rem;
-            inline-size: 3rem;
+            // min-block-size: 8rem;
+            // max-block-size: 8rem;
+            // inline-size: 8rem;
 
             img {
                 inline-size: 100%;
+
+                &:not(:first-child){
+                    margin-top: 2rem;
+                }
             }
         }
 
