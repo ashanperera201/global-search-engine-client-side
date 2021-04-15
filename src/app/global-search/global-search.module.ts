@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { SearchAreaComponent } from './search-area/search-area.component';
 import { GlobalSearchComponent } from './global-search.component';
 import { SearchRoutingModule } from './global-search.routing';
+import { HttpClientModule } from '@angular/common/http';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -16,7 +21,12 @@ import { SearchRoutingModule } from './global-search.routing';
     CommonModule,
     SearchRoutingModule,
     TabsModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    GoogleChartsModule,
+    HttpClientModule
   ]
 })
 export class GlobalSearchModule { }

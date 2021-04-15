@@ -1,6 +1,7 @@
 <div class="search-bar">
-    <input type="seach" id="searchBar" name='searchBar' placeholder=" " (keyup.enter)='onSearch($event)'
-        [(ngModel)]='searchKey' />
-    <label for="searchBar">What are you looking for?</label>
-    <button (click)="onSearchClickHander()"><span class="material-icons">search</span></button>
+    <mat-form-field appearance="outline">
+        <mat-label>What are you looking for?</mat-label>
+        <input matInput placeholder="What are you looking for?" [(ngModel)]='searchKey' (keyup.enter)='onSearch($event)'>
+        <mat-icon matSuffix class="search-bar--icon">saved_search</mat-icon>
+    </mat-form-field>
 </div>

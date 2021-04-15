@@ -43,26 +43,24 @@
                         <tab heading="Most visited" id="tab1">
                             <ul class="tab-list">
                                 <li class="tab-list__item" *ngFor="let clinic of ' '.repeat(1).split('')">
-                                    <div class="tab-list__item-icon">
-                                        <img src="https://chartio.com/assets/50552a/tutorials/charts/stacked-bar-charts/073137bf11f1c2226f68c3188128e28d66115622dcdecc9bc208a6d4117f53e8/stacked-bar-example-1.png"
-                                            alt="">
-                                        <img src="https://i.imgur.com/dZtIzi2.png" alt="img">
+                                    <div class="tab-list__item--bar-chart">
+                                        <!-- provide data visited data -->
+                                        <google-chart [title]="mostVisitedAnalysis.title" [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
+                                            [columns]="mostVisitedAnalysis.columnNames" [options]="mostVisitedAnalysis.options">
+                                        </google-chart>
                                     </div>
-                                    <!-- <div class="tab-list__item-column tab-list__item-column--btc">
-                                        <label>Visited Count</label>
-                                        <p>100</p>
+                                    <div class="tab-list__item--bar-chart">
+                                        <!-- provide most searched data sets -->
+                                        <google-chart [title]="mostVisitedAnalysis.title" [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
+                                            [columns]="mostVisitedAnalysis.columnNames" [options]="mostVisitedAnalysis.options">
+                                        </google-chart>
                                     </div>
-                                    <div class="tab-list__item-column tab-list__item-column--price">
-                                        <label>Visited Site</label>
-                                        <p>www.nibm.lk</p>
-                                    </div> -->
-                                    <!-- <div class="tab-list__item-column tab-list__item-column--change">
-                                        <label>View ratings</label>
-                                        <p class="positive">....</p>
+                                    <div class="tab-list__item--bar-chart">
+                                        <!-- provide daily searches. -->
+                                        <google-chart [title]="mostVisitedAnalysis.title" [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
+                                            [columns]="mostVisitedAnalysis.columnNames" [options]="mostVisitedAnalysis.options">
+                                        </google-chart>
                                     </div>
-                                    <div class="tab-list__item-chart">
-
-                                    </div> -->
                                 </li>
                             </ul>
                         </tab>
