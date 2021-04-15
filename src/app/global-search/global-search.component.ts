@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'angular-google-charts';
-import { HttpClient } from '@angular/common/http';
+import { GlobalSearchService } from './global-search.service';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'global-search',
@@ -10,8 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class GlobalSearchComponent implements OnInit {
   mostVisitedAnalysis: any = {};
   searchedresults: any[] = [];
+  @BlockUI() blockUI!: NgBlockUI;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private globalSearchService: GlobalSearchService) { }
 
   ngOnInit() {
     this.initializeMostVisitedChart();
@@ -39,14 +41,15 @@ export class GlobalSearchComponent implements OnInit {
   }
 
   searchedTerm = (term: string) => {
-    console.log(term);
-    this.httpClient.get("serachTerm/term").subscribe((serviceResult: any) => {
-      debugger
+    this.blockUI.start("Loading.......");
+    this.globalSearchService.searchTerm(term).subscribe((serviceResult: any) => {
       if (serviceResult) {
         this.searchedresults = serviceResult;
+        this.blockUI.stop();
       }
     }, error => {
       console.log(error);
+      this.blockUI.stop();
     })
   }
 }
