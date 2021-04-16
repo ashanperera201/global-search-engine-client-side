@@ -27,9 +27,9 @@
                 <div class="search-engine__body-section--content-list">
                     <ul class="content-list">
                         <li class="content-list__item" *ngFor="let vehicleRes of searchedresults">
-                            <div class="content-list__img">
-                                <img src="https://via.placeholder.com/300.png/09f/fff" alt="img">
-                            </div>
+                            <a class="content-list__img" [href]="vehicleRes?.link">
+                                <img [src]="vehicleRes?.image" alt="img">
+                            </a>
                             <p class="content-list__description">{{vehicleRes?.name}}</p>
                             <p class="content-list__price">{{vehicleRes?.price}}</p>
                         </li>
@@ -41,26 +41,30 @@
                     <tabset class="tab">
                         <tab heading="Most visited" id="tab1">
                             <ul class="tab-list">
-                                <li class="tab-list__item" *ngFor="let clinic of ' '.repeat(1).split('')">
+                                <li class="tab-list__item">
                                     <div class="tab-list__item--bar-chart">
                                         <!-- provide data visited data -->
-                                        <google-chart [title]="mostVisitedAnalysis.title"
+                                        <google-chart [title]="mostVisitedAnalysis.title" [width]="chartWidth"
                                             [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
                                             [columns]="mostVisitedAnalysis.columnNames"
                                             [options]="mostVisitedAnalysis.options">
                                         </google-chart>
                                     </div>
+                                </li>
+                                <li class="tab-list__item">
                                     <div class="tab-list__item--bar-chart">
                                         <!-- provide most searched data sets -->
-                                        <google-chart [title]="mostVisitedAnalysis.title"
-                                            [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
-                                            [columns]="mostVisitedAnalysis.columnNames"
-                                            [options]="mostVisitedAnalysis.options">
+                                        <google-chart [title]="mostSearchedKeyWord.title" [width]="chartWidth"
+                                            [type]="mostSearchedKeyWord.type" [data]="mostSearchedKeyWord.data"
+                                            [columns]="mostSearchedKeyWord.columnNames"
+                                            [options]="mostSearchedKeyWord.options">
                                         </google-chart>
                                     </div>
+                                </li>
+                                <li class="tab-list__item">
                                     <div class="tab-list__item--bar-chart">
                                         <!-- provide daily searches. -->
-                                        <google-chart [title]="mostVisitedAnalysis.title"
+                                        <google-chart [title]="mostVisitedAnalysis.title" [width]="chartWidth"
                                             [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
                                             [columns]="mostVisitedAnalysis.columnNames"
                                             [options]="mostVisitedAnalysis.options">

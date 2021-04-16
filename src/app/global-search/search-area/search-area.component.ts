@@ -22,4 +22,9 @@ export class SearchAreaComponent implements OnInit {
     this.searchedTerm.emit(this.searchKey);
   }
 
+  onClick = () => {
+    if (this.searchKey) {
+      this.searchedTerm.emit(this.searchKey);
+    }
+  }
 }
