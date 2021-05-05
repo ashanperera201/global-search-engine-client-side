@@ -41,26 +41,11 @@
     &__body-section {
         width: 100%;
 
-        .refresh {
-            align-items: flex-end;
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 2rem;
-            margin-bottom: 1rem;
-
-            button {
-                border-radius: 0;
-                width: 15rem;
-                height: 5rem;
-            }
-        }
-
         &--content-list {
             display: flex;
             flex-wrap: wrap;
             overflow-y: auto;
             gap: 3rem;
-            margin-top: 3rem;
         }
 
         .visited-chart-section {
@@ -170,11 +155,15 @@
         left: 50%;
         text-align: center;
         transform: translate(-50%, -50%);
+        background: #000;
+        opacity: 0.5;
+        padding: 2rem;
+        border-radius: 3rem;
+        cursor: pointer;
 
         &--name {
             font-size: 2.4rem;
-            font-weight: 500;
-            font-family: Jost;
+            font-weight: 400;
             line-height: 1.2;
             color: #fff;
 
@@ -184,14 +173,20 @@
         }
 
         &--price {
-            font-size: 1.3rem;
-            font-weight: 500;
-            font-family: Jost;
+            font-size: 1.8rem;
+            font-weight: 400;
             color: #fff;
 
             @include respond(phone) {
                 font-size: 1rem;
             }
         }
+    }
+
+    &__label {
+        position: absolute;
+        bottom: 0;
+        padding-left: 1rem;
+        color: #fff;
     }
 }

@@ -17,16 +17,16 @@
                     <li class="content-list__item" *ngFor="let vehicleRes of searchedresults">
                         <a class="content-list__img" [href]="vehicleRes?.link">
                             <img [src]="vehicleRes?.image" alt="img">
+                            <div class="content-list__details">
+                                <p class="content-list__details--name">{{vehicleRes?.name}}</p>
+                                <p class="content-list__details--price">{{vehicleRes?.price}}</p>
+                            </div>
+                            <div class="content-list__label">
+                                <p class="label">{{vehicleRes?.label}}</p>
+                            </div>
                         </a>
-                        <div class="content-list__details">
-                            <p class="content-list__details--name">{{vehicleRes?.name}}</p>
-                            <p class="content-list__details--price">{{vehicleRes?.price}}</p>
-                        </div>
                     </li>
                 </ul>
-            </div>
-            <div class="refresh">
-                <button mat-raised-button color="primary">Refresh</button>
             </div>
             <div class="visited-chart-section">
                 <mat-card>
@@ -34,9 +34,9 @@
                         <mat-card-title>Most visited chart</mat-card-title>
                     </mat-card-header>
                     <div class="chart">
-                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
-                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                            [chartType]="barChartType">
+                        <canvas baseChart [datasets]="mostVisited.barChartData" [labels]="mostVisited.barChartLabels"
+                            [options]="mostVisited.barChartOptions" [plugins]="mostVisited.barChartPlugins" [legend]="mostVisited.barChartLegend"
+                            [chartType]="mostVisited.barChartType">
                         </canvas>
                     </div>
                 </mat-card>
@@ -46,9 +46,9 @@
                         <mat-card-title>Most searched term</mat-card-title>
                     </mat-card-header>
                     <div class="chart">
-                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
-                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                            [chartType]="barChartType">
+                        <canvas baseChart [datasets]="mostSearchedTerms.barChartData" [labels]="mostSearchedTerms.barChartLabels"
+                            [options]="mostSearchedTerms.barChartOptions" [plugins]="mostSearchedTerms.barChartPlugins" [legend]="mostSearchedTerms.barChartLegend"
+                            [chartType]="mostSearchedTerms.barChartType">
                         </canvas>
                     </div>
                 </mat-card>
