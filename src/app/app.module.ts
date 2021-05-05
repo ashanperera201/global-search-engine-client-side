@@ -15,7 +15,7 @@ import { BlockUIModule } from 'ng-block-ui';
     AppRoutingModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-    BlockUIModule.forRoot()
+    BlockUIModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

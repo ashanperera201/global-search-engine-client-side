@@ -12,70 +12,46 @@
             </header>
         </div>
         <main class="search-engine__body-section">
-            <div class="search-engine__body-section--left">
-                <h4 class="search-engine__body-section--title">Recommended for you...</h4>
-                <div class="search-engine__body-section--chip-wrapper">
-                    <span class="chip">Popular</span>
-                    <span class="chip chip--active">News</span>
-                    <span class="chip">Science</span>
-                    <span class="chip">Music</span>
-                    <span class="chip chip--active">Tech</span>
-                    <span class="chip">Health</span>
-                    <span class="chip chip--active">Economy</span>
-                    <span class="chip">Movies</span>
-                </div>
-                <div class="search-engine__body-section--content-list">
-                    <ul class="content-list">
-                        <li class="content-list__item" *ngFor="let vehicleRes of searchedresults">
-                            <a class="content-list__img" [href]="vehicleRes?.link">
-                                <img [src]="vehicleRes?.image" alt="img">
-                            </a>
-                            <p class="content-list__description">{{vehicleRes?.name}}</p>
-                            <p class="content-list__price">{{vehicleRes?.price}}</p>
-                        </li>
-                    </ul>
-                </div>
+            <div class="search-engine__body-section--content-list">
+                <ul class="content-list">
+                    <li class="content-list__item" *ngFor="let vehicleRes of searchedresults">
+                        <a class="content-list__img" [href]="vehicleRes?.link">
+                            <img [src]="vehicleRes?.image" alt="img">
+                        </a>
+                        <div class="content-list__details">
+                            <p class="content-list__details--name">{{vehicleRes?.name}}</p>
+                            <p class="content-list__details--price">{{vehicleRes?.price}}</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="search-engine__body-section--right">
-                <div class="search-engine__body-section--tabs">
-                    <tabset class="tab">
-                        <tab heading="Most visited" id="tab1">
-                            <ul class="tab-list">
-                                <li class="tab-list__item">
-                                    <div class="tab-list__item--bar-chart">
-                                        <!-- provide data visited data -->
-                                        <google-chart [title]="mostVisitedAnalysis.title" [width]="chartWidth"
-                                            [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
-                                            [columns]="mostVisitedAnalysis.columnNames"
-                                            [options]="mostVisitedAnalysis.options">
-                                        </google-chart>
-                                    </div>
-                                </li>
-                                <li class="tab-list__item">
-                                    <div class="tab-list__item--bar-chart">
-                                        <!-- provide most searched data sets -->
-                                        <google-chart [title]="mostSearchedKeyWord.title" [width]="chartWidth"
-                                            [type]="mostSearchedKeyWord.type" [data]="mostSearchedKeyWord.data"
-                                            [columns]="mostSearchedKeyWord.columnNames"
-                                            [options]="mostSearchedKeyWord.options">
-                                        </google-chart>
-                                    </div>
-                                </li>
-                                <li class="tab-list__item">
-                                    <div class="tab-list__item--bar-chart">
-                                        <!-- provide daily searches. -->
-                                        <google-chart [title]="mostVisitedAnalysis.title" [width]="chartWidth"
-                                            [type]="mostVisitedAnalysis.type" [data]="mostVisitedAnalysis.data"
-                                            [columns]="mostVisitedAnalysis.columnNames"
-                                            [options]="mostVisitedAnalysis.options">
-                                        </google-chart>
-                                    </div>
-                                </li>
-                            </ul>
-                        </tab>
-                        <tab heading="Top searches">Basic content 1</tab>
-                    </tabset>
-                </div>
+            <div class="refresh">
+                <button mat-raised-button color="primary">Refresh</button>
+            </div>
+            <div class="visited-chart-section">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Most visited chart</mat-card-title>
+                    </mat-card-header>
+                    <div class="chart">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                </mat-card>
+
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Most searched term</mat-card-title>
+                    </mat-card-header>
+                    <div class="chart">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                </mat-card>
             </div>
         </main>
     </div>
