@@ -3,6 +3,7 @@ import { GlobalSearchService } from './global-search.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { switchMap } from 'rxjs/operators';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'global-search',
@@ -60,7 +61,7 @@ export class GlobalSearchComponent implements OnInit {
     }
   }
 
-  constructor(private globalSearchService: GlobalSearchService) { }
+  constructor(private globalSearchService: GlobalSearchService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.loadChartingData();
@@ -94,10 +95,13 @@ export class GlobalSearchComponent implements OnInit {
     // searching part
     this.blockUI.start("Retreiving.......");
     this.globalSearchService.searchTerm(term).subscribe((serviceResult: any) => {
-      if (serviceResult) {
+      if (serviceResult && serviceResult.length > 0) {
         this.searchedresults = serviceResult;
         this.blockUI.stop();
+      }else{
+        this.toastrService.warning('No results found','Warning')
       }
+      this.blockUI.stop();
     }, error => {
       console.log(error);
       this.blockUI.stop();
