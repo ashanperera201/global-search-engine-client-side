@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: app-client
+  namespace: deep-crawler
+  labels:
+    app: app-client
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: app-client
+    tier: frontend
+  type: LoadBalancer
+
+## If Required - NodePort
+# spec:
+#   type: ClusterIP
+#   ports:
+#   - name: app-client-port
+#     port: 80
+#     protocol: TCP
+#   selector:
+#     app: app-client
+      # tier: frontend

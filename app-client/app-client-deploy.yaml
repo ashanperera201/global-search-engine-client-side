@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-client
+  namespace: deep-crawler
+  labels:
+    app: app-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-client
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: app-client
+        tier: frontend
+    spec:
+      containers:
+      - name: deep-crawler-client
+        image: dimuit86/deep-crawler-client:v3
+        imagePullPolicy: IfNotPresent
+        # env:
+        # - name: WORDPRESS_DB_HOST
+        #   value: wordpress-mysql
+        # - name: WORDPRESS_DB_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysql-pass
+        #       key: password
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "10Mi"
+      #   volumeMounts:
+      #   - name: app-client-storage
+      #     mountPath: "/etc/nginx/"
+      #     subPath: nginx.conf
+      #   resources: {}
+      # volumes:
+      # - name: app-client-storage
+      #   persistentVolumeClaim:
+      #     claimName: app-client-pvc
+
+

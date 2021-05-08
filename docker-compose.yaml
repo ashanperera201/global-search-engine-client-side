@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  backend:
+    container_name: deep-api
+    image: deep-crawler/server:v3
+    restart: always
+    build:
+      context: ./global-search-engine-server-side
+      dockerfile: Dockerfile
+    # environment:
+    #   - FLASK_APP=".app/main.py"
+    #   - FLASK_ENV=production  
+    #   - FLASK_RUN_PORT=5000    
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "5000:5000"
+
+  frontend:
+    container_name: app-client
+    image: deep-crawler/client:v3
+    restart: always
+    build:
+      context: ./global-search-engine-client-side
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+
+  db:
+    container_name: deep-db
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=deepcrawler
+      - MYSQL_PASSWORD=deepcrawler
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=deepdb
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d:ro
+      # - ./db/data:/var/lib/mysql

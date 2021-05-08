@@ -9,8 +9,7 @@ RUN npm install
 
 COPY . .
 
-# RUN npm run build --prod
-RUN npm run aot-build
+RUN npm run build --prod
 
 # Production stage
 FROM nginx:stable-alpine

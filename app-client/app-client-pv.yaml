@@ -1,0 +1,16 @@
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: app-client-pv
+#   namespace: deep-crawler
+#   labels:
+#     usage: app-client-pvc
+# spec:
+#   storageClassName: managed-premium # manual
+#   capacity:
+#     storage: 2Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   hostPath:
+#     path: "/etc/nginx/"
