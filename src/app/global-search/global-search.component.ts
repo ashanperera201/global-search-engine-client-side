@@ -20,10 +20,11 @@ export class GlobalSearchComponent implements OnInit {
   // finalized data object.
   mostVisited: any = {
     barChartType: 'bar',
-    barChartLabels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    barChartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     barChartData: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+      { data: [0, 0, 20, 81, 56], label: 'Ikman' },
+      { data: [0, 0, 15, 19, 86], label: 'Riyasewana' },
+      { data: [0, 0, 5, 13, 40], label: 'Patpat' },
     ],
     barChartPlugins: [pluginDataLabels],
     barChartLegend: true,
@@ -42,10 +43,9 @@ export class GlobalSearchComponent implements OnInit {
   // finalized data object.
   mostSearchedTerms: any = {
     barChartType: 'bar',
-    barChartLabels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    barChartLabels: ['Axio', 'Aqua', 'Toyota', 'Toyota corolla', 'Civic'],
     barChartData: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+      { data: [65, 25, 59, 100, 81], label: 'Terms' }
     ],
     barChartPlugins: [pluginDataLabels],
     barChartLegend: true,
@@ -98,8 +98,8 @@ export class GlobalSearchComponent implements OnInit {
       if (serviceResult && serviceResult.length > 0) {
         this.searchedresults = serviceResult;
         this.blockUI.stop();
-      }else{
-        this.toastrService.warning('No results found','Warning')
+      } else {
+        this.toastrService.warning('No results found', 'Warning')
       }
       this.blockUI.stop();
     }, error => {
